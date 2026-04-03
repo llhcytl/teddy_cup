@@ -1,0 +1,58 @@
+问题: 金花股份2024年的营业收入是多少？
+--------------------------------------------------
+The following generation flags are not valid and may be ignored: ['temperature', 'top_p', 'top_k']. Set `TRANSFORMERS_VERBOSITY=info` for more details.
+The attention mask is not set and cannot be inferred from input because pad token is same as eos token. As a consequence, you may observe unexpected behavior. Please pass your input's `attention_mask` to obtain reliable results.
+[OK] 数据库连接成功
+SQL: SELECT SUM(total_operating_revenue) AS total_revenue
+FROM core_performance_indicators_sheet
+WHERE stock_code = '600080' AND report_year = 2024;
+结果: 1条记录
+{'total_revenue': Decimal('361754753.49')}
+
+问题: 华润三九2024年度的净利润是多少？
+--------------------------------------------------
+[ERROR] 查询执行失败: (1054, "Unknown column 'net_profit' in 'field list'")
+SQL: SELECT net_profit 
+FROM core_performance_indicators_sheet 
+WHERE stock_code = '000999' AND report_year = 2024;
+SQL: SELECT net_profit 
+FROM core_performance_indicators_sheet 
+WHERE stock_code = '000999' AND report_year = 2024;
+
+问题: 两家公司2024年的总资产对比
+--------------------------------------------------
+[上下文] 解析问题: 两家公司2024年的总资产对比
+[上下文] 解析为: 金花股份和华润三九2024年的总资产对比
+SQL: SELECT 
+    bs.stock_code,
+    bs.stock_abbr,
+    bs.report_year,
+    bs.asset_total_assets
+FROM 
+    balance_sheet bs
+JOIN 
+    core_performance_indicators_sheet cpi ON bs.stock_code = cpi.stock_code AND bs.report_year = cpi.report_year
+WHERE 
+    bs.stock_code IN ('600080', '000999')
+    AND bs.report_year = 2024;
+结果: 20条记录
+{'stock_code': '600080', 'stock_abbr': '金花股份', 'report_year': 2024, 'asset_total_assets': Decimal('2108551141.95')}
+{'stock_code': '600080', 'stock_abbr': '金花股份', 'report_year': 2024, 'asset_total_assets': Decimal('2108551141.95')}
+{'stock_code': '600080', 'stock_abbr': '金花股份', 'report_year': 2024, 'asset_total_assets': Decimal('1787904844.64')}
+{'stock_code': '600080', 'stock_abbr': '金花股份', 'report_year': 2024, 'asset_total_assets': Decimal('1787904844.64')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('41247674433.65')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('41247674433.65')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('41247674433.65')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('41247674433.65')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40769923351.38')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40769923351.38')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40769923351.38')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40769923351.38')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40698266461.18')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40698266461.18')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40698266461.18')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40698266461.18')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40081972320.77')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40081972320.77')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40081972320.77')}
+{'stock_code': '000999', 'stock_abbr': '华润三九', 'report_year': 2024, 'asset_total_assets': Decimal('40081972320.77')}
